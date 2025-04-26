@@ -1,1 +1,46 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background: #f7f7f7;
+    margin: 0;
+    padding: 20px;
+}
 
+h1 {
+    margin-bottom: 20px;
+}
+
+#container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.tube {
+    background: white;
+    border: 2px solid #d00;
+    border-radius: 10px;
+    padding: 20px;
+    width: 150px;
+    position: relative;
+}
+
+.count {
+    font-size: 2em;
+    margin-bottom: 10px;
+    color: #d00;
+}
+
+button {
+    background: #d00;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #a00;
+}
