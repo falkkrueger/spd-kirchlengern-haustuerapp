@@ -1,39 +1,34 @@
-const counts = [0, 0, 0, 0];
+// Wartet, bis der DOM geladen ist, bevor Event-Listener gesetzt werden
+document.addEventListener('DOMContentLoaded', () => {
+  const tubes = document.querySelectorAll('.tube');
+  tubes.forEach(tube => {
+    tube.addEventListener('click', () => {
+      // Stimmenzähler erhöhen
+      const countElem = tube.querySelector('.tube-count');
+      let count = parseInt(countElem.textContent) || 0;
+      count += 1;
+      countElem.textContent = count;
 
-function vote(tubeNumber) {
-    counts[tubeNumber - 1]++;
-    document.getElementById(`count${tubeNumber}`).innerText = counts[tubeNumber - 1];
-    
-    animateBall(tubeNumber);
-}
+      // Neue Kugel erstellen, die in die Röhre fällt
+      const tubeGraphic = tube.querySelector('.tube-graphic');
+      const ball = document.createElement('div');
+      ball.classList.add('ball');
+      // Kugel am oberen Rand der Tube einsetzen
+      tubeGraphic.appendChild(ball);
 
-function animateBall(tubeNumber) {
-    const ball = document.createElement('div');
-    ball.classList.add('ball');
-    document.getElementById(`tube${tubeNumber}`).appendChild(ball);
+      // Kurz warten, um die Kugel-Positionierung im DOM zu initialisieren
+      void ball.offsetHeight;  // Force Reflow (Browser-Layout aktualisieren)
 
-    setTimeout(() => {
-        ball.remove();
-    }, 1000);
-}
+      // Endposition der Kugel berechnen (so dass sie auf bereits vorhandenen Kugeln landet)
+      const tubeHeight = tubeGraphic.offsetHeight;
+      const ballDiameter = ball.offsetHeight || 20;  // Höhe der Kugel (laut CSS 20px)
+      const ballCount = tubeGraphic.querySelectorAll('.ball').length;
+      // Berechne den Abstand von oben: Tube-Höhe minus Höhe aller Kugeln
+      let targetTop = tubeHeight - ballDiameter * ballCount;
+      if (targetTop < 0) targetTop = 0;  // falls die Tube "überläuft", Oberkante als Limit
 
-// Ball-Style dynamisch erzeugen
-const style = document.createElement('style');
-style.innerHTML = `
-.ball {
-    width: 20px;
-    height: 20px;
-    background: red;
-    border-radius: 50%;
-    position: absolute;
-    top: -20px;
-    left: 50%;
-    transform: translateX(-50%);
-    animation: fall 1s ease-out forwards;
-}
-@keyframes fall {
-    0% { top: -20px; opacity: 1; }
-    100% { top: 80%; opacity: 0; }
-}
-`;
-document.head.appendChild(style);
+      // Neue Position setzen (Animation durch CSS-Transition)
+      ball.style.top = targetTop + 'px';
+    });
+  });
+});
