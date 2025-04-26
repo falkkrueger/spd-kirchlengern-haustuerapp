@@ -1,46 +1,81 @@
+/* Allgemeine Stile */
 body {
-    font-family: Arial, sans-serif;
-    text-align: center;
-    background: #f7f7f7;
-    margin: 0;
-    padding: 20px;
+  margin: 0;
+  font-family: sans-serif;
+  background: #f9f9f9;             /* Heller Hintergrund für modernen Look */
+  color: #333;                     /* Dunkle Schrift für guten Kontrast */
 }
 
 h1 {
-    margin-bottom: 20px;
+  text-align: center;
+  margin: 20px 0;
+  font-size: 1.5em;
 }
 
-#container {
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
-    gap: 20px;
+/* Header-Logo oben auf der Seite */
+header {
+  text-align: center;
+  padding: 10px 0;
+}
+.header-logo {
+  max-width: 120px;                /* Logo-Größe anpassen (optional) */
+  width: 100%;
+  height: auto;
 }
 
+/* Container für die Säulen (Tubes) */
+.tubes {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;                /* Bei schmalen Bildschirmen umbrechen */
+  gap: 20px;                      /* Abstand zwischen den Säulen */
+  padding: 20px;
+  box-sizing: border-box;
+  max-width: 1000px;
+  margin: 0 auto;                 /* zentriert die Inhalte insgesamt */
+}
+
+/* Einzelne Säule (Tube) */
 .tube {
-    background: white;
-    border: 2px solid #d00;
-    border-radius: 10px;
-    padding: 20px;
-    width: 150px;
-    position: relative;
+  width: 100px;                   /* Feste Breite jeder Säule */
+  text-align: center;
+  cursor: pointer;                /* Zeigt an, dass die Säule anklickbar ist */
 }
 
-.count {
-    font-size: 2em;
-    margin-bottom: 10px;
-    color: #d00;
+/* Zählerzahl oberhalb der Säule */
+.tube-count {
+  font-size: 1.2em;
+  font-weight: bold;
+  margin-bottom: 5px;
 }
 
-button {
-    background: #d00;
-    color: white;
-    border: none;
-    padding: 10px;
-    border-radius: 5px;
-    cursor: pointer;
+/* Grafische Darstellung der Röhre */
+.tube-graphic {
+  width: 60px;
+  height: 250px;
+  margin: 0 auto;
+  position: relative;
+  /* Darstellung der "Tube": nur Seiten und Boden, kein Deckel (oben offen) */
+  border: 2px solid #333;
+  border-top: none;
+  background: transparent;
 }
 
-button:hover {
-    background: #a00;
+/* Beschriftung unterhalb der Säule */
+.tube-label {
+  margin-top: 5px;
+  font-weight: normal;
+}
+
+/* Kugel, die in die Säule fällt */
+.ball {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);    /* Horizontale Zentrierung der Kugel */
+  width: 20px;
+  height: 20px;
+  background-color: #e3000f;      /* SPD-Rot */
+  border-radius: 50%;
+  transition: top 0.5s ease-out;  /* Animation für das Fallenlassen */
 }
