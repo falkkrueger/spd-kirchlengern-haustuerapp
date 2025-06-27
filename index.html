@@ -16,11 +16,43 @@
     <img src="SPD_Kirchlengern_Logo.jpeg" alt="SPD Kirchlengern Logo" class="header-logo" />
   </header>
 
-  <!-- Hauptbereich mit Frage und den vier Themen-Säulen -->
+  <!-- Hauptbereich mit Konfiguration und anschließender Abstimmung -->
   <main>
+ codex/abfrage-der-säulenanzahl-und-beschriftungen
       <h1>Was ist dir am wichtigsten?</h1>
       <div class="tubes"></div>
     </main>
+
+    <!-- Konfigurationsbereich für die Wahlkämpfer -->
+    <section id="setup">
+      <h1>Haustürwahlkampf Setup</h1>
+      <form id="config-form">
+        <label for="tube-number">Anzahl der Säulen:</label>
+        <select id="tube-number">
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4" selected>4</option>
+          <option value="5">5</option>
+        </select>
+        <div id="label-inputs">
+          <input type="text" class="label-input" data-index="1" placeholder="Thema 1" />
+          <input type="text" class="label-input" data-index="2" placeholder="Thema 2" />
+          <input type="text" class="label-input" data-index="3" placeholder="Thema 3" />
+          <input type="text" class="label-input" data-index="4" placeholder="Thema 4" />
+          <input type="text" class="label-input" data-index="5" placeholder="Thema 5" />
+        </div>
+        <button type="submit">Start</button>
+      </form>
+    </section>
+
+    <!-- Abstimmungsbereich -->
+    <section id="voting" class="hidden">
+      <h1>Was ist dir am wichtigsten?</h1>
+      <div class="tubes"></div>
+    </section>
+  </main>
+main
 
   <!-- Einbindung der JavaScript-Datei -->
   <script src="script.js"></script>

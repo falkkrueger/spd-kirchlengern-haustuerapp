@@ -79,3 +79,24 @@ header {
   border-radius: 50%;
   transition: top 0.5s ease-out;  /* Animation für das Fallenlassen */
 }
+
+/* Allgemeine Hilfsklassen */
+.hidden {
+  display: none;
+}
+
+/* Setup-Bereich */
+#setup {
+  text-align: center;
+  margin: 20px 0;
+}
+
+#label-inputs {
+  margin-top: 10px;
+}
+
+#label-inputs .label-input {
+  display: block;
+  margin: 5px auto;
+  max-width: 200px;
+}
